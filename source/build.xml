@@ -33,11 +33,6 @@
 		<ant antfile="${is.source}/ts_ch_consumer_plugin/build/build.xml" dir="${is.source}/ts_ch_consumer_plugin/build" target="clean"/>
 		<ant antfile="${is.source}/ts_ch_consumer_plugin/build/build.xml" dir="${is.source}/ts_ch_consumer_plugin/build" target="build"/>
 			
-			
-		<echo message="Executing build target cartridge: ts_smc"/>
-		<ant antfile="${is.source}/ts_smc/build/build.xml" dir="${is.source}/ts_smc/build" target="clean"/>
-		<ant antfile="${is.source}/ts_smc/build/build.xml" dir="${is.source}/ts_smc/build" target="build"/>
-			
 	</target>
 	<target name="touch" description="Updates the timestamp of all files.">
 	 <touch>
