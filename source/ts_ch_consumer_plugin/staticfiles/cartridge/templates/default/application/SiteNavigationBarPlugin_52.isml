@@ -1,0 +1,507 @@
+	<!-- application access -->
+
+	<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_APPS)#">
+		<isif condition="#(SelectedMenuItem EQ 'Application') OR
+			(SelectedMenuItem EQ 'Applications')#">
+			<li class="selected">
+		<iselse>
+			<li>
+		</isif>
+			<a href="#URL(Action('ViewChannelApps-List'), Parameter('ChannelID', ApplicationState:ChannelID))#">Applications</a>
+		</li>
+	</isif>
+
+	<!-- Consumer Management -->
+	<isif
+		condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONSUMERS) or
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CONSUMERS)#">
+		<isif
+			condition="#(SelectedMenuItem EQ 'ChannelUserMgmt') or
+						  (SelectedMenuItem EQ 'ChannelUser') or
+						  (SelectedMenuItem EQ 'ChannelUserGroup') OR
+						  (SelectedMenuItem EQ 'Customers')#">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewCustomerManagement_52-Overview'), Parameter('ChannelID', ApplicationState:ChannelID))#">Customers</a>
+		<ul>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONSUMERS)#">
+				<li><a
+					href="#URL(Action('ViewCustomers_52-List'), Parameter('ChannelID', CurrentChannel:UUID))#">Customers</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONSUMERS)#">
+				<li><a
+					href="#URL(Action('ViewUserGroupList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Customer Segments</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CONSUMERS)#">
+				<li><a href="#URL(Action('ViewCustomerImpex_52-Status'))#">Import &amp; Export</a></li>
+			</isif>
+		</ul>
+		</li>
+	</isif>
+
+	<!-- Online Marketing -->
+	<isif
+		condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_MARKETING) OR
+					isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES) OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_SHORTLINKS)#">
+		<isif
+			condition="#(SelectedMenuItem EQ 'OnlineMarketing') OR
+						  (SelectedMenuItem EQ 'Marketing')#">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewOnlineMarketing-Overview'), Parameter('ChannelID', ApplicationState:ChannelID))#">Marketing</a>
+		<ul>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_MARKETING)#">
+				<li><a
+					href="#URL(Action('ViewChannelPromotionStatistics-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Promotion Overview</a></li>
+				<li><a href="#URL(Action('ViewCampaignList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Campaigns</a></li>
+				<li><a
+					href="#URL(Action('ViewPromotionList-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Promotions</a></li>
+				<li><a
+					href="#URL(Action('ViewPromotionAttachmentUpload-BrowseSecureDirectory'), Parameter('ChannelID', CurrentChannel:UUID))#">Promotion Attachment Upload</a></li>
+				<li><a
+					href="#URL(Action('ViewPromotionCodeGroupList-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Promotion Code Groups</a></li>
+
+				<li><a href="#URL(Action('ViewPromotionCode-ShowDeactivate'))#">Deactivate Promotion Codes</a></li>
+				
+				<li><a
+					href="#URL(Action('ViewAffiliatePartnerList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Affiliate Partners</a></li>
+				<li><a
+					href="#URL(Action('ViewABTestList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">A/B Tests</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SHORTLINKS)#">
+				<li><a
+					href="#URL(Action('ViewChannelLinkManagement-Overview'), Parameter('ChannelID', CurrentChannel:UUID))#">Link Management</a></li>
+			</isif>
+			<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_MARKETING)#">
+				<li><a href="#URL(Action('ViewProductRecommDataFeedList-Start'))#">Recommendations - Data Feeds</a></li>
+				<li><a href="#URL(Action('ViewPromotionCodeImpex-Status'))#">Import &amp; Export</a></li>
+			</isif>
+			<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES)#">
+				<li><a
+					href="#URL(Action('ViewProcessList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID),Parameter('JobNamePrefix','Marketing'), Parameter('SelectedMenuItem', 'OnlineMarketing'))#">Batch Processes</a></li>
+			</isif>
+			<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_MARKETING)#">
+				<li><a
+					href="#URL(Action('ViewGiftCertificateList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Gift Cards &amp; Certificates</a></li>
+			</isif>
+		</ul>
+		</li>
+	</isif>
+
+	<!-- Channel Catalog -->
+	<isif
+		condition="#	isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_CATALOG_VIEWS) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_CATALOGS) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CATALOGS_PRODUCTS) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRICES) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+		<isif
+			condition="#(SelectedMenuItem EQ 'CatalogOverview') or
+						  (SelectedMenuItem EQ 'ProductStatistics') OR
+						  (SelectedMenuItem EQ 'ChannelCatalogs') or
+						  (SelectedMenuItem EQ 'ChannelProducts') or
+						  (SelectedMenuItem EQ 'ChannelReviews') or
+						  (SelectedMenuItem EQ 'CatalogFilters') or
+						  (SelectedMenuItem EQ 'ProductFilters') or
+						  (SelectedMenuItem EQ 'ChannelSyndication') or
+						  (SelectedMenuItem EQ 'ChannelImportExport') or
+						  (SelectedMenuItem EQ 'ChannelProductHistory') or
+						  (SelectedMenuItem EQ 'Sharing') or
+						  (SelectedMenuItem EQ 'PageCache')#">
+						  
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewOverview-ChannelCatalog'), Parameter('ChannelID', ApplicationState:ChannelID))#">Catalogs</a>
+		<ul>
+			<!-- Product statistics -->
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+				<li><a
+					href="#URL(Action('ViewChannelProductStatistics-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Product Overview</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CATALOGS)#">
+				<li><a
+					href="#URL(Action('ViewChannelCatalogList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Catalogs</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+				<li><a
+					href="#URL(Action('ViewProductList_52-Search'), Parameter('ChannelID', CurrentChannel:UUID), Parameter('ClassificationSearchEnabled', 'true'))#">Products</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRICES)#">
+				<li><a
+					href="#URL(Action('ViewChannelPriceListList-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Price Lists</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+				<li><a
+					href="#URL(Action('ViewProductHistory_52-Search'),Parameter('ChangeType','0'), Parameter('ChannelID', CurrentChannel:UUID), Parameter('SourceRepository', 'CurrentChannel'))#">Product History</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+				<li><a
+					href="#URL(Action('ViewProductAttributeGroups_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Product Attribute Groups</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+				<li><a
+					href="#URL(Action('ViewChannelReviewList-ShowAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Product Ratings and Reviews</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+				<li><a
+					href="#URL(Action('ViewVariationTypeList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Variation Types</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+				<li><a
+					href="#URL(Action('ViewProductRecycleBin_52-Search'), Parameter('ChannelID', CurrentChannel:UUID))#">Recycle Bin</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS) AND NOT ProductSharingDictionary:SharingIsEnabled#">
+				<li><a
+					href="#URL(Action('ViewSyndication_52-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Product Syndication</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS) AND ProductSharingDictionary:SharingIsEnabled#">
+				<li><a
+					href="#URL(Action('ViewChannelInboundSharing-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Inbound Product Sharing</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CATALOG_VIEWS)#">
+				<li><a
+					href="#URL(Action('ViewChannelCatalogFilterList-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Catalog Views</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS)#">
+				<li><a
+					href="#URL(Action('ViewChannelOutboundSyndicationList-Start'))#">Product Data Feeds</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+				<li><a
+					href="#URL(Action('ViewProductFilterList-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Predefined Product Filters</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CATALOGS_PRODUCTS)#">
+				<li><a href="#URL(Action('ViewCatalogImpex_52-Status'))#">Import &amp; Export</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES)#">
+				<li><a
+					href="#URL(Action('ViewProcessList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID),Parameter('JobNamePrefix','Catalog'), Parameter('SelectedMenuItem', 'ChannelCatalogs'))#">Batch Processes</a></li>
+			</isif>
+			<li><a href="#URL(Action('ViewWarehouseList_52-List'))#">Warehouses</a></li>
+		</ul>
+		</li>
+	</isif>
+
+
+
+	<!-- Content -->
+	<isif
+		condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT) or 
+					isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES) or 
+					isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CONTENT) or
+					isDefined(CurrentChannelPermissionMap:SLD_VIEW_LANDING_PAGES) #">
+		<isif
+			condition="#(SelectedMenuItem EQ 'ContentOverview') OR
+						  (SelectedMenuItem EQ 'ChannelPages') OR
+						  (SelectedMenuItem EQ 'ChannelComponents') OR
+						  (SelectedMenuItem EQ 'ChannelLandingPages') OR
+						  (SelectedMenuItem EQ 'PageletTemplates') OR
+						  (SelectedMenuItem EQ 'PageletImpex') OR
+						  (SelectedMenuItem EQ 'ContentUpload') OR
+						  (SelectedMenuItem EQ 'ChannelPageletImpex')#">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewOverview-Content'), Parameter('ChannelID', ApplicationState:ChannelID))#">Content</a>
+		<ul>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">
+				<li><a
+					href="#URL(Action('ViewChannelContentCompleteness-Start'), Parameter('ContentRepositoryUUID', CurrentChannel:UUID), Parameter('initial', 'true'))#">Content Overview</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">
+				<li><a
+					href="#URL(Action('ViewContentPageTree-List'), Parameter('ContentRepositoryUUID', CurrentChannel:UUID))#">Pages</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">
+				<li><a href="#URL(Action('ViewChannelPages-ViewSearch'))#">Page Variants</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">
+				<li><a
+					href="#URL(Action('ViewPageletTemplatesTree-List'), Parameter('PageFlag', 'true'), Parameter('ContentRepositoryUUID', CurrentChannel:UUID))#">Page Templates</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">
+				<li><a
+					href="#URL(Action('ViewPageletTemplatesTree-List'), Parameter('PageFlag', 'false'), Parameter('ContentRepositoryUUID', CurrentChannel:UUID))#">Component Templates</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">
+				<li><a href="#URL(Action('ViewChannelPageComponents-View'))#">Components</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">
+				<li><a
+					href="#URL(Action('ViewContentIncludes-List'), Parameter('ContentRepositoryUUID', CurrentChannel:UUID))#">Includes</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">
+				<li><a
+					href="#URL(Action('ViewViewContexts-List'), Parameter('ContentRepositoryUUID', CurrentChannel:UUID))#">View Contexts</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_LANDING_PAGES)#">
+				<li><a href="#URL(Action('ViewLandingPages-BrowseDirectory'))#">Landing Pages</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES)#">
+				<li><a
+					href="#URL(Action('ViewProcessList_52-ListAll'), Parameter('ChannelID', ChannelID), Parameter('JobNamePrefix', 'MasterContent'), Parameter('SelectedMenuItem','ContentOverview'))#">Batch Processes</a></li>
+			</isif>
+			<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CONTENT)#">
+				<li><a href="#URL(Action('ViewContentUpload-BrowseDirectory'))#">Content Upload</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CONTENT)#">
+				<li><a href="#URL(Action('ViewChannelPageletImpex-Status'))#">Import &amp; Export</a></li>
+			</isif>
+		</ul>
+		</li>
+	</isif>
+
+	<!-- Stores -->
+	<isif
+		condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_STORES)#">
+		<isif condition="#SelectedMenuItem EQ 'Stores'#">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewStores_52-Overview'), Parameter('ChannelID', ApplicationState:ChannelID))#">Stores</a>
+		<ul>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_STORES)#">
+				<li><a
+					href="#URL(Action('ViewStores_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Stores</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_STORES)#">
+				<li><a
+					href="#URL(Action('ViewStoreImpex_52-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Import</a></li>
+			</isif>
+		</ul>
+		</li>
+	</isif>
+
+
+	<!-- Order Management -->
+	<isif
+		condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_ORDERS) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_ORDERS) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_PAYMENT) OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_SHIPPING)#">
+
+		<isif
+			condition="#(SelectedMenuItem EQ 'Orders') OR
+						(SelectedMenuItem EQ 'PurchaseOrderList') OR
+							(SelectedMenuItem EQ 'OrderStatistics') OR
+							(SelectedMenuItem EQ 'ShippingConfiguration')#">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewOrderList_52-Start'), Parameter('ChannelID', ApplicationState:ChannelID))#">Orders</a>
+		<ul>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_ORDERS)#">
+				<li><a
+					href="#URL(Action('ViewChannelOrderStatistics-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Order Overview</a></li>
+				<li><a
+					href="#URL(Action('ViewOrderList_52-OrderSearch'), Parameter('ChannelID', CurrentChannel:UUID))#">Order List</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_ORDERS)#">
+				<li><a
+					href="#URL(Action('ViewOrderProcessing_52-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Import &amp; Export</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SHIPPING)#">
+				<li><a
+					href="#URL(Action('ViewAdvancedShippingOverview_52-Overview'), Parameter('ChannelID', CurrentChannel:UUID))#">Shipping Configuration</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PAYMENT)#">
+				<li><a
+					href="#URL(Action('ViewPaymentMethodList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#">Payment Methods</a></li>
+			</isif>
+		</ul>
+		</li>
+	</isif>
+
+	<!-- Auction Management -->
+	<isif
+		condition="#isDefined(CurrentChannelPermissionMap:SLD_MANAGE_AUCTIONS)#">
+		<isif condition="#SelectedMenuItem EQ 'AuctionManagement'#">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewAuctions_52-DispatchList'), Parameter('ChannelID', ApplicationState:ChannelID))#">Auctions</a>
+		</li>
+	</isif>
+
+	<!--- Mass Data Tasks Management --->
+	<isif
+		condition="#(isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS) AND NOT ProductSharingDictionary:SharingIsEnabled) OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_DATA_REPLICATION)                                                     OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_SEARCH_INDEXES)                                                       OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CATALOGS_PRODUCTS)                                              OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CONSUMERS)                                                      OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_ORDERS)                                                         OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_MARKETING)                                                            OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES)                                                      OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_LABELS)                                                               OR
+					  isDefined(CurrentChannelPermissionMap:SLD_VIEW_AUDIT_REPORTS)#">
+		<isif condition="#(SelectedMenuItem EQ 'MassDataTasks') or (SelectedMenuItem EQ 'Catalogs')#">
+		
+		
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewOverview-ChannelMassData'), Parameter('ChannelID', ApplicationState:ChannelID))#">Mass Data Tasks</a>
+		<ul>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_DATA_REPLICATION)#">
+				<li><a href="#URL(Action('ViewReplicationTaskList_52-List'))#">Data Replication Tasks</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_LABELS)#">
+				<li><a href="#URL(Action('ViewChannelLabel-List'))#">Labels</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CATALOGS_PRODUCTS)#">
+				<li><a href="#URL(Action('ViewCatalogImpex_52-Status'))#">Catalog Import &amp; Export</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_MARKETING)#">
+				<li><a href="#URL(Action('ViewPromotionCodeImpex-Status'))#">Promotion Code Import &amp; Export</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CONSUMERS)#">
+				<li><a href="#URL(Action('ViewCustomerImpex_52-Status'))#">Customer Import &amp; Export</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_ORDERS)#">
+				<li><a
+					href="#URL(Action('ViewOrderProcessing_52-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Order Import &amp; Export</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS) AND NOT ProductSharingDictionary:SharingIsEnabled#">
+				<li><a
+					href="#URL(Action('ViewSyndication_52-Start'), Parameter('ChannelID', CurrentChannel:UUID))#">Product Syndication</a></li>
+			</isif>
+			
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SEARCH_INDEXES)#">
+				<li><a
+					href="#URL(Action('ViewSearchIndex-Start'),Parameter('ChannelID', CurrentChannel:UUID))#">Search Indexes</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES)#">
+				<li><a
+					href="#URL(Action('ViewProcessList_52-ListAll'),Parameter('ChannelID', CurrentChannel:UUID),Parameter('JobNamePrefix','SearchIndex'), Parameter('SelectedMenuItem', 'MassDataTasks'))#">Batch Processes</a></li>
+			</isif>
+			<isif 
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_AUDIT_REPORTS)#">
+				<li><a href="#URL(Action('ViewAuditItemReport-Start'),Parameter('ChannelID', CurrentChannel:UUID))#">Audit Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			</isif>
+
+		</ul>
+		</li>
+	</isif>
+	<!-- Localization -->
+	<isif
+		condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_LOCALIZATION) OR
+		isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_LOCALIZATION)#">
+		<isif condition="#SelectedMenuItem EQ 'Localization'#">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewLocalizations_52-Start'), Parameter('ChannelID', ApplicationState:ChannelID))#">Localization</a>
+		<ul>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_LOCALIZATION)#">
+				<li><a
+					href="#URL(Action('ViewLocalizations_52-Management'), Parameter('ChannelID', ApplicationState:ChannelID))#">Localization Management</a></li>
+			</isif>
+			<isif
+				condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_LOCALIZATION)#">
+				<li><a
+					href="#URL(Action('ViewLocalizationImpex_52-Status'), Parameter('ChannelID', ApplicationState:ChannelID))#">Import &amp; Export</a></li>
+			</isif>
+		</ul>
+		</li>
+	</isif>
+
+	<!-- Service -->
+	<isif condition="#(isDefined(CurrentChannelPermissionMap:SLD_MANAGE_SERVICES)			OR
+						isDefined(CurrentChannelPermissionMap:SLD_VIEW_SERVICES))#">
+		<isif condition="#(SelectedMenuItem EQ 'Services') OR
+				 (SelectedMenuItem EQ 'Service Configuration') #">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a href="#URL(Action('ViewChannelServiceList-Dispatch'))#">Services</a>
+		</li>
+	</isif>
+
+	<!-- Domain Preference -->
+	<isif condition="# isDefined(CurrentChannelPermissionMap:CM_USER) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_REGIONALSETTINGS_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_SHIPPING_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_MARKETING_PREFERENCES) oR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_ORDERS_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_SHIPPING_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_SEARCH_INDEXES_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRICES_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONSUMERS_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_CATALOGS_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_PAGE_CACHE_PREFERENCES) OR
+				isDefined(CurrentChannelPermissionMap:SLD_VIEW_AUCTIONS_PREFERENCES)#">
+		<isif condition="#(SelectedMenuItem EQ 'ChannelDomainPreference')#">
+			<li class="selected"><iselse>
+			<li>
+		</isif>
+		<a
+			href="#URL(Action('ViewDomainPreference_52-Start'), Parameter('ChannelID', ApplicationState:ChannelID))#">Preferences</a>
+
+		</li>
+	</isif>

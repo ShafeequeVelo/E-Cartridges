@@ -1,0 +1,24 @@
+<!---[Comment]--->
+<iscontent type="text/html" charset="UTF-8" compact="true">
+<iscontent compact="true" charset="UTF-8">
+<iscachekey object="#ProductBO#">
+<isif condition="#NOT(ProductBO:InventoryStatus:InStock)#">
+	<p class="ish-productAvailability" data-dynamic-block-name="Availability" data-dynamic-block-id="#Pagelet:UUID#">
+		<span class="ish-productAvailability-value">
+			<istext key="product.out_of_stock.text" />
+		</span>
+	</p>
+<iselseif condition="#NOT(ProductBO:isEndOfLife) AND NOT(ProductBO:isLastOrderDate)#">
+	<p class="ish-productAvailability" data-dynamic-block-name="Availability" data-dynamic-block-id="#Pagelet:UUID#">
+		<span class="ish-productAvailability-value">
+			<istext key="product.instock.text" />
+		</span>
+	</p>
+</isif>
+Stock information:<br/>
+<isloop iterator="StockBOs" alias="stock">
+	<b> <isprint value="#stock:WarehouseName#" /> :
+	</b>
+	<isprint value="#stock:Count#" />
+	<br>
+</isloop>

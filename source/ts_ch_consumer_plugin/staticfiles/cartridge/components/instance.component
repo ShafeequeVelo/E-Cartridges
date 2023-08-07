@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns="http://www.intershop.de/component/2010">
+	<fulfill
+		requirement="com.intershop.beehive.core.capi.businessObject.BusinessObjectExtensionFactories">
+		<instance with="enterprise.ApplicationBOWarehouseExtensionFactory"
+			singleton="false" />
+	</fulfill>
+	<implementation name="enterprise.ApplicationBOWarehouseExtensionFactory"
+		class="com.intershop.ts.component.warehouse.orm.internal.ApplicationBOWarehouseExtensionFactory"
+		factory="JavaBeanFactory" implements="BusinessObjectExtensionFactory"></implementation>
+</components>

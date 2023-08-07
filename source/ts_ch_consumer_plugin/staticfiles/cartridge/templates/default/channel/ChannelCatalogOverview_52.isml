@@ -1,0 +1,483 @@
+<iscontent type="text/html" charset="UTF-8" compact="true">
+<isinclude template="inc/Modules">
+
+<!--- define a number sequence with modulo 2 --->
+<isseq-init name="count" modulo="2">
+<!-- Page Navigator -->
+<ISBreadcrumbTrail link="#URL(Action('ViewChannel-Select'), Parameter('ChannelID', CurrentChannel:UUID))#" text="#CurrentChannel:DisplayName#" start="true" hide="true">
+<ISBreadcrumbTrail link="#URL(Action('ViewChannelCatalogOverview_52-Show'), Parameter('ChannelID', CurrentChannel:UUID))#" text="Channel Catalogs">
+<!-- EO Page Navigator -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td colspan="5" class="overview_title">Channel Catalogs</td>
+	</tr>
+	<tr>
+		<td colspan="5" class="table_title_description">Use the modules below to set up and manage the products and catalogs of this channel. Price lists are used to define special prices or prices for specific customer segments. The product history allows you to trace product changes. The recycle bin is used to restore or purge deleted products. The definition of variation types simplifies the creation of product variations. Products and catalogs can also be imported from a file.<br/>&nbsp;</td>
+	</tr>
+	<tr>
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewChannelProductStatistics-Start'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Product Overview</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">View product statistics of the channel repository.<br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse><td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CATALOGS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewChannelCatalogList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Catalogs</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Manage the catalogs of the channel repository. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+	
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewProductList_52-Search'), Parameter('ChannelID', CurrentChannel:UUID), Parameter('ClassificationSearchEnabled', 'true'))#" class="overview_subtitle">Products</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Manage the products of the channel repository. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+	
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRICES)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewChannelPriceListList-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Price Lists</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Manage different price lists of your channel. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewProductHistory_52-Search'),Parameter('ChangeType','0'), Parameter('ChannelID', CurrentChannel:UUID), Parameter('SourceRepository', 'CurrentChannel'))#" class="overview_subtitle">Product History</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">View the history of the channel product repository.<br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+	
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewProductAttributeGroups_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Product Attribute Groups</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Manage the product attribute groups of the channel repository. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+	
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img
+							src="#WebRoot()#/images/arrow_right_down.gif" width="9"
+							height="9" alt="" border="0" /></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a
+							href="#URL(Action('ViewChannelReviewList-ShowAll'), Parameter('ChannelID', CurrentChannel:UUID))#"
+							class="overview_subtitle">Product Ratings and Reviews</a></td>
+
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Review product ratings and reviews by customers.<br />&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img
+							src="#WebRoot()#/images/space.gif" width="2" height="1" alt=""
+							border="0" /></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+	
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewVariationTypeList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Variation Types</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Manage the variation types of the channel repository. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+	
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewProductRecycleBin_52-Search'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Recycle Bin</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Open the recycle bin of the channel repository to purge or restore deleted products. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+	
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS) AND NOT ProductSharingDictionary:SharingIsEnabled#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewSyndication_52-Start'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Product Syndication</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Derive products from other repositories. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS) AND ProductSharingDictionary:SharingIsEnabled#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewChannelInboundSharing-Start'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Inbound Product Sharing</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Manage inbound sharing for shared products. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CATALOG_VIEWS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%">
+							<a href="#URL(Action('ViewChannelCatalogFilterList-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Catalog Views</a>
+						</td>					
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Define customer segment-specific catalog views on the channel product repository. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+		
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_SYNDICATE_CATALOGS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewChannelOutboundSyndicationList-Start'))#" class="overview_subtitle">Product Data Feeds</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Deliver product data to other repositories. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>		
+		
+		
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewProductFilterList-ListAll'), Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Predefined Product Filters</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Define predefined product filters used for dynamic product assignment to categories, pages and components. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>		
+		
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CATALOGS_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewCatalogImpex_52-Status'))#" class="overview_subtitle">Import &amp; Export</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Import and export products and catalogs of the channel repository. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+	
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_BATCH_PROCESSES)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewProcessList_52-ListAll'), Parameter('ChannelID', CurrentChannel:UUID),Parameter('JobNamePrefix','Catalog'), Parameter('SelectedMenuItem', 'ChannelCatalogs'))#" class="overview_subtitle">Batch Processes</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">Open the batch process monitor. <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr><td width="50%">&nbsp;</td>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+				<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_IMPEX_CATALOGS_PRODUCTS)#">
+			<td width="50%">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td class="overview_arrow"><img src="#WebRoot()#/images/arrow_right_down.gif" width="9" height="9" alt="" border="0"/></td>
+						<td class="overview_subtitle" nowrap="nowrap" width="100%"><a href="#URL(Action('ViewWarehouseList_52-List'),Parameter('ChannelID', CurrentChannel:UUID))#" class="overview_subtitle">Warehouse</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_title_description" valign="top">list of warehouses <br/>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="overview_line"><img src="#WebRoot()#/images/space.gif" width="2" height="1" alt="" border="0"/></td>
+					</tr>
+				</table>
+			</td>
+			<isseq-next name="count">
+			<isif condition="#count==0#">
+				</tr>
+				<tr>
+			<iselse>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+				<td class="overview_vertical_line"><img src="#WebRoot()#/images/space.gif" width="1" height="2" alt="" border="0"/></td>
+				<td><img src="#WebRoot()#/images/space.gif" width="12" height="1" alt="" border="0"/></td>
+			</isif>
+		</isif>
+		
+		<isif condition="#count==1#">
+			<td width="50%">&nbsp;</td>
+		</isif>
+
+	</tr>
+</table>

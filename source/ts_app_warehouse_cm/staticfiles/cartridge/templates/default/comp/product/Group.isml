@@ -1,0 +1,8 @@
+<iscontent personalized="true" compact="true" charset="UTF-8">
+<isif condition="#(CurrentPipelineName EQ 'Render') AND (CurrentStartNodeName EQ 'StartExternal')#">
+	<iscache type="relative" hour="24">  
+</isif>
+
+<isinclude template="modules/Modules">
+<isComponentGroup pageletConfigurationParameters="#PageletConfigurationParameters#" slot="slot.product.Group.pagelet2-Slot">
+<isslot slot="slot.stock.pagelet2-Slot">

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pagelet:PageletModel xmlns:pagelet="http://www.intershop.de/pagelet/2010" name="comp.product.availability.pagelet2">
+  <pageletDefinitions name="comp.product.availability">
+    <callParameterDefinitions name="ProductBO" type="com.intershop.component.product.capi.ProductBO"/>
+    <callParameterInterfaces referencedName="interface.product.Group.pagelet2-Interface"/>
+    <callParameterInterfaces referencedName="interface.expressshop.Group.pagelet2-Interface"/>
+    <callParameterInterfaces referencedName="interface.product.form.addtocart.Components.pagelet2-Interface"/>
+    <renderPipeline referencedName="ProcessStock-DetermineStock"/>
+    <renderTemplate referencedName="comp/product/Availability.isml"/>
+  </pageletDefinitions>
+</pagelet:PageletModel>

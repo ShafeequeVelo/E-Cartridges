@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pagelet:PageletModel xmlns:pagelet="http://www.intershop.de/pagelet/2010" name="comp.product.stock.pagelet2">
+  <pageletDefinitions name="comp.product.stock">
+    <callParameterInterfaces referencedName="interface.product.Group.pagelet2-Interface"/>
+    <renderTemplate referencedName="Stock"/>
+  </pageletDefinitions>
+</pagelet:PageletModel>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns="http://www.intershop.de/component/2010">
+
+	<fulfill requirement="extensionFactory"
+		of="com.intershop.beehive.core.capi.businessObject.BusinessObjectExtensionFactories">
+		<instance with="b2c.ApplicationBOWarehouseExtensionFactory"
+			singleton="false"></instance>
+	</fulfill>
+	<implementation name="b2c.ApplicationBOWarehouseExtensionFactory"
+		class="com.intershop.ts.component.warehouse.orm.internal.ApplicationBOWarehouseExtensionFactory"
+		factory="JavaBeanFactory" implements="BusinessObjectExtensionFactory"></implementation>
+	
+	
+	<implementation name="ORMWarehouseBORepositoryImplFactory"
+		class="com.intershop.ts.component.warehouse.orm.internal.ORMWarehouseBORepositoryImplFactory"
+		implements="AbstractDomainRepositoryBOExtensionFactory">
+	</implementation>
+
+	<fulfill requirement="extensionFactory"
+		of="com.intershop.beehive.core.capi.businessobject.BusinessObjectExtensionFactories">
+		<instance with="ORMWarehouseBORepositoryImplFactory" />
+	</fulfill>
+
+	<instance with="PersistentObjectToBusinessObjectMapper" name="WarehousePOToWarehouseBOMapper">
+		<fulfill requirement="boToPOmapperExtensionID" value="WarehouseBORepository"></fulfill>
+	</instance>
+
+
+</components>

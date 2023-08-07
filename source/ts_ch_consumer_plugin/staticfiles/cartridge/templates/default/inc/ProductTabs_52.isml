@@ -1,0 +1,133 @@
+<iscontent type="text/html" charset="UTF-8" compact="true">
+<%@ page import = "java.util.*,com.intershop.beehive.xcs.capi.product.*" %>
+<table border="0" cellspacing="0" cellpadding="0" class="w100">
+	<tr>
+		<isif condition="#SelectedTab eq 'General'#">
+			<td class="w e n table_tabs_en_background" nowrap="nowrap">General</td>
+		<iselse>
+			<td class="w e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProduct_52-Edit'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">General</a>
+			</td>
+		</isif>
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_CONTENT)#">	
+        	<isif condition="#SelectedTab eq 'Content'#">
+	            <td class="e n table_tabs_en_background" nowrap="nowrap">Content</td>
+	        <iselse>
+	            <td class="e n s table_tabs_dis_background" nowrap="nowrap">
+	                <a href="#URL(Action('ViewChannelProductContent-ListPageletEntryPoints'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Content</a>
+	            </td>
+	        </isif>
+	    </isif>
+		<isif condition="#SelectedTab eq 'OnlineOffline'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Online/Offline</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductMaintenance_52-Start'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Online/Offline</a>
+			</td>
+		</isif>
+		<isif condition="#SelectedTab eq 'Attributes'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Attributes</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductCustomAttributes_52-ManageCA'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Attributes</a>
+			</td>
+		</isif>
+		<isif condition="#SelectedTab eq 'Variations'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Variations</td>
+		<iselse>	
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductVariations_52-View'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Variations</a>
+			</td>
+		</isif>
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_PRICES)#">
+			<isif condition="#SelectedTab eq 'Pricing'#">
+				<td class="e n table_tabs_en_background" nowrap="nowrap">Pricing</td>
+			<iselse>
+				<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+					<a href="#URL(Action('ViewProductPrices_52-View'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Pricing</a>
+				</td>
+			</isif>
+		</isif>
+		<isif condition="#SelectedTab eq 'Categories'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Categories</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductCategories_52-Start'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Categories</a>
+			</td>
+		</isif>
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_MANAGE_AUCTIONS)#">
+			<isif condition="#SelectedTab eq 'Auction'#">
+				<td class="e n table_tabs_en_background" nowrap="nowrap">Auction</td>
+			<iselse>
+				<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+					<a href="#URL(Action('ViewProductAuctionCategories_52-Start'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Auction</a>
+				</td>
+			</isif>
+		</isif>
+		<isif condition="#SelectedTab eq 'Classifications'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Classifications</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductClassification_52-List'), Parameter('ChannelID', ChannelID), Parameter('ProductID',Product:UUID))#" class="table_tabs_dis">Classifications</a>
+			</td>
+		</isif>
+		<isif condition="#SelectedTab eq 'Attachments'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Attachments</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductAttachment_52-List'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Attachments</a>
+			</td>
+		</isif>
+		<isif condition="#SelectedTab eq 'Links'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Links</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductLinks_52-Start'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Links</a>
+			</td>
+		</isif>
+		<isif condition="#SelectedTab eq 'Bundles'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Bundles</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductBundle_52-Start'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Bundles</a>
+			</td>
+		</isif>
+		<isif condition="#SelectedTab eq 'Ratings'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Ratings</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewChannelProductReviewList-ShowAll'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Ratings</a>
+			</td>
+		</isif>
+		<isif condition="#SelectedTab eq 'RetailSet'#">
+			<td class="e n table_tabs_en_background" nowrap="nowrap">Retail Set</td>
+		<iselse>
+			<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+				<a href="#URL(Action('ViewProductRetailSet_52-Start'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Retail Set</a>
+			</td>
+		</isif>
+		<isif condition="#isDefined(CurrentChannelPermissionMap:SLD_VIEW_LABELS)#">
+			<isif condition="#SelectedTab eq 'Labels'#">
+				<td class="e n table_tabs_en_background" nowrap="nowrap">Labels</td>
+			<iselse>
+				<td class="e n s table_tabs_dis_background" nowrap="nowrap">
+					<a href="#URL(Action('ViewChannelObjectLabels-GetLabelsByObject'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID), Parameter('LabelObjectType', 'Product'))#"  id="LabelsTab" class="table_tabs_dis">Labels</a>
+				</td>
+			</isif>
+		</isif>
+		<isif condition="#Product:DerivedProduct#">
+			<isif condition="#SelectedTab eq 'ProductChanges'#">
+				<td class="e n table_tabs_en_background" nowrap="nowrap">Changes</td>
+			<iselse>
+				<td class="e n s table_tabs_dis_background" nowrap="nowrap"><a href="#URL(Action('ViewChannelSharedProductChanges-Start'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Changes</a></td>
+			</isif>
+		</isif>
+
+			<isif condition="#SelectedTab eq 'Inventory'#">
+				<td class="e n table_tabs_en_background" nowrap="nowrap">Inventory</td>
+			<iselse>
+				<td class="e n s table_tabs_dis_background" nowrap="nowrap"><a href="#URL(Action('ViewProductInventory_52-List'), Parameter('ChannelID', ChannelID), Parameter('ProductID', Product:UUID))#" class="table_tabs_dis">Inventory</a></td>
+			</isif>
+		<td width="100%" class="s"><img src="#WebRoot()#/images/space.gif" width="1" height="1" alt="" border="0"/></td>
+	</tr>
+</table>
