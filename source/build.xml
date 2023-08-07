@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<!--General cartridge build file.-->
+<project name="component.build" default="deploy" basedir=".">
+
+	<!--individual base properties-->
+	<property file="${is.home}/intershop.properties"/>
+	<!--<property name="is.source" value="${IS_SOURCE}"/>-->
+	<property name="is.source" value="/var/lib/jenkins/jobs/WarehouseManagement/workspace/source"/>
+	<property name="is.target" value="${IS_TARGET}"/>
+
+	<!--execute cartridge deploy target-->
+	<target name="deploy" description="Build all cartridges." depends="touch">
+
+		<echo message="Executing build target cartridge: ts_bc_warehouse"/>
+		<ant antfile="${is.source}/ts_bc_warehouse/build/build.xml" dir="${is.source}/ts_bc_warehouse/build" target="clean"/>
+		<ant antfile="${is.source}/ts_bc_warehouse/build/build.xml" dir="${is.source}/ts_bc_warehouse/build" target="build"/>
+		
+		<echo message="Executing build target cartridge: ts_bc_warehouse_orm"/>
+		<ant antfile="${is.source}/ts_bc_warehouse_orm/build/build.xml" dir="${is.source}/ts_bc_warehouse_orm/build" target="clean"/>
+		<ant antfile="${is.source}/ts_bc_warehouse_orm/build/build.xml" dir="${is.source}/ts_bc_warehouse_orm/build" target="build"/>
+		
+		<echo message="Executing build target cartridge: ts_app_warehouse_cm"/>
+		<ant antfile="${is.source}/ts_app_warehouse_cm/build/build.xml" dir="${is.source}/ts_app_warehouse_cm/build" target="clean"/>
+		<ant antfile="${is.source}/ts_app_warehouse_cm/build/build.xml" dir="${is.source}/ts_app_warehouse_cm/build" target="build"/>
+		
+		<echo message="Executing build target cartridge: ts_demo_warehouse"/>
+		<ant antfile="${is.source}/ts_demo_warehouse/build/build.xml" dir="${is.source}/ts_demo_warehouse/build" target="clean"/>
+		<ant antfile="${is.source}/ts_demo_warehouse/build/build.xml" dir="${is.source}/ts_demo_warehouse/build" target="build"/>
+		
+			
+		<echo message="Executing build target cartridge: ts_ch_consumer_plugin"/>
+		<ant antfile="${is.source}/ts_ch_consumer_plugin/build/build.xml" dir="${is.source}/ts_ch_consumer_plugin/build" target="clean"/>
+		<ant antfile="${is.source}/ts_ch_consumer_plugin/build/build.xml" dir="${is.source}/ts_ch_consumer_plugin/build" target="build"/>
+			
+			
+		<echo message="Executing build target cartridge: ts_smc"/>
+		<ant antfile="${is.source}/ts_smc/build/build.xml" dir="${is.source}/ts_smc/build" target="clean"/>
+		<ant antfile="${is.source}/ts_smc/build/build.xml" dir="${is.source}/ts_smc/build" target="build"/>
+			
+	</target>
+	<target name="touch" description="Updates the timestamp of all files.">
+	 <touch>
+	    <fileset dir="${is.source}"/>
+	  </touch>
+	</target>
+</project>
+
