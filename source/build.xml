@@ -6,7 +6,7 @@
 	<!--individual base properties-->
 	<property file="${is.home}/intershop.properties"/>
 	<!--<property name="is.source" value="${IS_SOURCE}"/>-->
-	<property name="is.source" value="/var/lib/jenkins/workspace/WarehouseManagement/source"/>
+	<property name="is.source" value=" ${basedir}"/>
 	<property name="is.target" value="${IS_TARGET}"/>
 
 	<!--execute cartridge deploy target-->
