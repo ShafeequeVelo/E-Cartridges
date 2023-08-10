@@ -10,7 +10,7 @@
 	<property name="is.target" value="${IS_TARGET}"/>
 
 	<!--execute cartridge deploy target-->
-	<target name="deploy" description="Build all cartridges." depends="touch">
+	<target name="deploy" description="Build all cartridges.">
 
 		<echo message="Executing build target cartridge: ts_bc_warehouse"/>
 		<ant antfile="${is.source}/ts_bc_warehouse/build/build.xml" dir="${is.source}/ts_bc_warehouse/build" target="clean"/>
